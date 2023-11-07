@@ -8,6 +8,8 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-organoid-counter-{{ version }}.tar.gz
   sha256: 84bb398b4bee082c0c365ae86a778bf7aabd7f14f42745384016ff4976504235
+  patches:
+    - qtpy.patch
 
 build:
   noarch: python
@@ -27,8 +29,8 @@ requirements:
     - pytorch >=1.13.1
     - scikit-image
     - torchvision >=0.14.1
+    - qtpy
     # - zenodo_get <=1.3.4  # Why s this needed?
-    # - pyqt
 
 test:
   imports:
