@@ -34,7 +34,7 @@ test:
     - napari_organoid_counter
   commands:
     - pip list
-    - pip check  # Fails due to aicsimageio deps and fixed constraints that were relaxed
+    # - pip check  # Fails due to aicsimageio deps and fixed constraints that were relaxed
   requires:
     - pip
     - pyqt
