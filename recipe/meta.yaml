@@ -8,8 +8,6 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-organoid-counter-{{ version }}.tar.gz
   sha256: fb9ebe7a0d3b9bff7face564fcef28fdd2b6466e288818ddcda59161f973dbdd
-  patches:
-    - qtpy.patch
 
 build:
   noarch: python
@@ -30,14 +28,13 @@ requirements:
     - scikit-image
     - torchvision >=0.14.1
     - qtpy
-    # - zenodo_get <=1.3.4  # Why s this needed?
 
 test:
   imports:
     - napari_organoid_counter
   commands:
     - pip list
-    # - pip check  # Fails due to aicsimageio deps and fixed constraints that were relaxed
+    - pip check  # Fails due to aicsimageio deps and fixed constraints that were relaxed
   requires:
     - pip
     - pyqt
