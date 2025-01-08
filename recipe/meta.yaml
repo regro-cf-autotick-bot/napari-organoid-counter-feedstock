@@ -6,24 +6,24 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/napari-organoid-counter-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/napari-organoid-counter-{{ version }}.tar.gz
   sha256: fb9ebe7a0d3b9bff7face564fcef28fdd2b6466e288818ddcda59161f973dbdd
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.8,<3.11
+    - python {{ python_min }}
     - setuptools-scm
   run:
     - napari >=0.4.17
     - napari-aicsimageio >=0.7.2
     - numpy
-    - python >=3.8,<3.11
+    - python >={{ python_min }},<3.11
     - pytorch >=1.13.1
     - scikit-image
     - torchvision >=0.14.1
@@ -38,6 +38,7 @@ test:
   requires:
     - pip
     - pyqt
+    - python {{ python_min }}
 
 about:
   home: https://pypi.org/project/napari-organoid-counter
